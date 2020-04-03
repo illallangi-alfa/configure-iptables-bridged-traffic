@@ -1,0 +1,11 @@
+---
+- name: "Update {{ role_name }} sysctl settings"
+  template:
+    src:  "{{ item.src | default((item.dest | basename ()) + '.j2')}}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - dest: "/etc/sysctl.d/{{ role_name }}.conf"
+      src: "sysctl.conf.j2"
+  notify: "reboot"
+  tags:
+    - "iptables-bridged-traffic"
