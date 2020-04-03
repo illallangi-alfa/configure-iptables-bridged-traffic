@@ -1,1 +1,1 @@
-# configure-hosts
+# configure-iptables-bridged-traffic
